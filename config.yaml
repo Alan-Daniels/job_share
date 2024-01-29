@@ -1,0 +1,17 @@
+name: "Jobs Sharing"
+description: "helper for randomised job shuffling weekly"
+version: "0.0.3"
+slug: "jobs_share"
+init: false
+options:
+  weekly_discord_uri: ""
+  daily_discord_uri: ""
+schema:
+  weekly_discord_uri: str
+  daily_discord_uri: str
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+  - i386

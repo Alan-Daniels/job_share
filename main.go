@@ -16,13 +16,13 @@ import (
 )
 
 var people = []string{
-	"Alan",
-	"Jarrod",
-	"Alex D",
 	"Aidan",
-	"Jordan",
+	"Alan",
+	"Alex D",
 	"Alex S",
 	"Cooper",
+	"Jarrod",
+	"Jordan",
 }
 
 var weeklyJobs = []string{

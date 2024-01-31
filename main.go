@@ -77,17 +77,13 @@ func SelectRandom(people, jobs []string) []string {
 }
 
 func SendJobsToDiscord(uri, speel string, actions []string) error {
-	var msg = storage.DiscordMessage{
-		Content: speel,
-		Embeds: []storage.DiscordEmbed{
-			{
-				Fields: make([]storage.DiscordField, len(actions)),
-			},
-		},
-	}
+	var wholeMsg string
+	wholeMsg = fmt.Sprintf("%s\n", speel)
 	for i := 0; i < len(actions); i++ {
-		msg.Embeds[0].Fields[i].Name = people[i]
-		msg.Embeds[0].Fields[i].Value = actions[i]
+		wholeMsg = fmt.Sprintf("%s\n**%s**: %s", wholeMsg, people[i], actions[i])
+	}
+	var msg = storage.DiscordMessage{
+		Content: wholeMsg,
 	}
 
 	fmt.Printf("msg: %v\n", msg)

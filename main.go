@@ -41,7 +41,7 @@ var dailyJobs = []string{
 	"Clean stove",
 	"Trash check throughout house",
 	"Checkup outside spaces",
-	"Feed fish",
+	"Sweep kitchen",
 	"turn lights & devices off",
 }
 
@@ -106,7 +106,7 @@ func SendJobsToDiscord(uri, speel string, actions []string) error {
 func doDailyJobs(discordUri string) error {
 	err := SendJobsToDiscord(
 		discordUri,
-		"Here are daily (you may obviously trade jobs between yourselves).",
+		"Here are daily jobs, they will **NOT** shuffle daily, but weekly.",
 		SelectRandom(people, dailyJobs),
 	)
 	return err
@@ -115,7 +115,7 @@ func doDailyJobs(discordUri string) error {
 func doWeeklyJobs(discordUri string) error {
 	err := SendJobsToDiscord(
 		discordUri,
-		"Here are weekly (you may obviously trade jobs between yourselves).",
+		"Here are weekly jobs.",
 		SelectRandom(people, weeklyJobs),
 	)
 	return err
@@ -135,7 +135,7 @@ func main() {
 	cr := cron.New()
 
 	// daily
-	cr.AddFunc("@daily", func() {
+	cr.AddFunc("@weekly", func() {
 		dt := time.Now().In(loc)
 		fmt.Println("Time for @daily is: ", dt.String())
 		err := doDailyJobs(opt.DailyDiscordUri)
